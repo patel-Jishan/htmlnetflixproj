@@ -1,0 +1,701 @@
+   body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 30px;
+            color: #e50914;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            from {
+                text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(229, 9, 20, 0.8), 0 0 30px rgba(229, 9, 20, 0.6);
+            }
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        select, .sign-in {
+            padding: 8px 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sign-in:hover {
+            background-color: #e50914;
+            border-color: #e50914;
+            transform: translateY(-2px);
+        }
+
+        select:hover {
+            border-color: #e50914;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1)), 
+                        linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(229, 9, 20, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(229, 9, 20, 0.2) 0%, transparent 50%);
+            animation: pulseGlow 4s ease-in-out infinite, floatingOrbs 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes floatingOrbs {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% { 
+                transform: translateY(-10px) rotate(90deg);
+            }
+            50% { 
+                transform: translateY(0px) rotate(180deg);
+            }
+            75% { 
+                transform: translateY(10px) rotate(270deg);
+            }
+        }
+
+        .hero-content {
+            font-size: 3rem;
+            font-weight: bold;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            animation: slideInDown 1s ease-out;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-content p:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .email-form {
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .email-form input {
+            padding: 10px;
+            width: 300px;
+            max-width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: #e50914;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .email-form button {
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-form button:hover {
+            background-color: #f40612;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+        }
+
+        .email-form button:active {
+            transform: translateY(0);
+        }
+
+        .email-form button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { 
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            50% { 
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+
+        .email-form button:hover::before {
+            animation: buttonRipple 0.6s ease-out;
+        }
+
+        @keyframes buttonRipple {
+            0% { 
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% { 
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+
+        .footer button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .footer button:hover::before {
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+        }
+
+        .section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+            animation: fadeInSection 1s ease-out;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #e50914;
+            animation: expandLine 2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes expandLine {
+            to {
+                width: 100%;
+            }
+        }
+
+        .trending {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .trending::-webkit-scrollbar {
+            display: none;
+        }
+
+        .trending img {
+            height: 300px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .trending img:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card {
+            height: 300px;
+            width: 200px;
+            background: linear-gradient(45deg, #e50914, #f40612);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            flex-shrink: 0;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .movie-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+        }
+
+        .movie-card:hover::before {
+            left: 100%;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .reason-box {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .reason-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #e50914, transparent, #e50914);
+            opacity: 0;
+            animation: borderGlow 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.1; }
+        }
+
+        .reason-box:hover::before {
+            animation: borderGlowHover 0.5s ease-out forwards;
+        }
+
+        @keyframes borderGlowHover {
+            to { opacity: 0.2; }
+        }
+
+        .reason-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: #e50914;
+        }
+
+        .reason-box h3 {
+            color: #e50914;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .reason-box:hover h3 {
+            color: #f40612;
+        }
+
+        .reason-box p {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .reason-box:hover p {
+            color: #fff;
+        }
+
+        .faq {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #1a1a1a;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            list-style: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #e50914;
+            transition: transform 0.3s ease;
+            animation: plusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes plusPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+        }
+
+        .faq-item[open] summary::after {
+            transform: translateY(-50%) rotate(45deg);
+            animation: none;
+        }
+
+        .faq-item summary:hover::after {
+            animation: none;
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .faq-item summary:hover {
+            background-color: #333;
+            color: #e50914;
+        }
+
+        .faq-item p {
+            padding: 0 15px 15px;
+            color: #ccc;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: rippleAnimation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnimation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Loading animation for movie cards */
+        .movie-card {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .movie-card:nth-child(1) { animation-delay: 0.1s; }
+        .movie-card:nth-child(2) { animation-delay: 0.2s; }
+        .movie-card:nth-child(3) { animation-delay: 0.3s; }
+        .movie-card:nth-child(4) { animation-delay: 0.4s; }
+        .movie-card:nth-child(5) { animation-delay: 0.5s; }
+        .movie-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Reason boxes staggered animation */
+        .reason-box {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .reason-box:nth-child(1) { animation-delay: 0.1s; }
+        .reason-box:nth-child(2) { animation-delay: 0.2s; }
+        .reason-box:nth-child(3) { animation-delay: 0.3s; }
+        .reason-box:nth-child(4) { animation-delay: 0.4s; }
+
+        .footer {
+            background: #000;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e50914, transparent);
+            animation: footerLine 3s ease-in-out infinite;
+        }
+
+        @keyframes footerLine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: #e50914;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+
+        .footer input {
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .footer button {
+            padding: 8px 15px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            margin-left: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer button:hover {
+            background-color: #f40612;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        ::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                font-size: 2rem;
+            }
+            
+            header {
+                padding: 20px 20px;
+            }
+            
+            .email-form input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .email-form button {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
